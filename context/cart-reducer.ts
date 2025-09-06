@@ -48,11 +48,16 @@ export const cartReducer = (state: CartState, action: CartAction): CartState => 
       return { items: [] }
 
     case "OPEN_CART":
-      console.log("OPEN_CART action triggered");
       return { ...state, isCartOpen: true, openCheckout: false }
+
+    case "CLOSE_CART":
+      return { ...state, isCartOpen: false }
 
     case "CHECKOUT":
       return { ...state, isCartOpen: false, openCheckout: true }
+
+    case "CLOSE_CHECKOUT":
+      return { ...state, openCheckout: false }
 
     default:
       return state

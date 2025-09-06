@@ -19,7 +19,8 @@ export default function Page() {
   const [searchQuery, setSearchQuery] = useState("");
   const [showOnlyAvailable, setShowOnlyAvailable] = useState(false);
 
-  const { openCart, isCartOpen, checkout, openCheckout } = useCart();
+  const { isCartOpen, checkout, openCheckout, closeCart, closeCheckout } =
+    useCart();
 
   useEffect(() => {
     loadMenuItems();
@@ -75,15 +76,11 @@ export default function Page() {
     setShowOnlyAvailable(showOnly);
   };
 
-  const handleBackToMenu = () => {
-    checkout();
-  };
-
   if (openCheckout) {
     return (
       <div className="flex flex-col min-h-screen bg-background">
         <main className="flex-1 p-4">
-          <CheckoutSummary onBack={handleBackToMenu} />
+          <CheckoutSummary onBack={closeCheckout} />
         </main>
       </div>
     );
@@ -163,7 +160,7 @@ export default function Page() {
 
       <CartSidebar
         isOpen={isCartOpen}
-        onClose={openCart}
+        onClose={closeCart}
         onCheckout={checkout}
       />
     </div>

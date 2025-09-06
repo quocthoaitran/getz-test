@@ -33,6 +33,14 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     dispatch({ type: "OPEN_CART" });
   };
 
+  const closeCart = () => {
+    dispatch({ type: "CLOSE_CART" });
+  };
+
+  const closeCheckout = () => {
+    dispatch({ type: "CLOSE_CHECKOUT" });
+  };
+
   const subtotal = state.items.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
@@ -57,6 +65,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         openCheckout: state.openCheckout || false,
         checkout,
         openCart,
+        closeCart,
+        closeCheckout,
       }}
     >
       {children}

@@ -25,5 +25,7 @@ export interface CartContextType {
   total: number
   itemCount: number
   openCart: () => void
+  closeCart: () => void
   checkout: () => void
+  closeCheckout: () => void
 }

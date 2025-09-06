@@ -1,6 +1,5 @@
 "use client";
 
-import React, { useState } from "react";
 import Image from "next/image";
 import { Button } from "../ui/button";
 import { Badge, ShoppingCart } from "lucide-react";
@@ -8,8 +7,7 @@ import { useCart } from "@/context/cart-context";
 import { CartSidebar } from "../cart-sidebar";
 
 const Header = () => {
-  const { itemCount, openCart, isCartOpen, checkout } = useCart();
-  console.log(isCartOpen);
+  const { itemCount, openCart, isCartOpen, checkout, closeCart } = useCart();
 
   return (
     <header className="sticky top-0 z-40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
@@ -48,7 +46,7 @@ const Header = () => {
       </div>
       <CartSidebar
         isOpen={isCartOpen}
-        onClose={openCart}
+        onClose={closeCart}
         onCheckout={checkout}
       />
     </header>
